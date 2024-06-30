@@ -1,0 +1,42 @@
+{
+    "name": "dconco/phpslides-status",
+    "description": "PhpSlides HTTP Status Response in handling PhpSlides API",
+    "homepage": "https://github.com/dconco/phpslides-status",
+    "type": "library",
+    "keywords": ["phpslides-status", "status", "api", "phpslides", "slides"],
+    "authors": [
+        {
+            "name": "Dave Conco",
+            "email": "concodave@gmail.com",
+            "homepage": "https://dconco.github.io"
+        }
+    ],
+    "version": "0.0.1",
+    "require": {
+        "php": ">=8.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "PhpSlides\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "PhpSlides\\Tests\\": "tests/"
+        }
+    },
+    "config": {
+        "allow-plugins": {
+            "bamarni/composer-bin-plugin": true
+        },
+        "preferred-install": "dist"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^11.2"
+    },
+    "scripts": {
+        "test": "phpunit"
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
+}
