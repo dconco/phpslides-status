@@ -8,10 +8,10 @@ use PhpSlides\Interface\StatusInterface;
 class Status implements StatusInterface
 {
 
-	public int $status = StatusCode::NO_CONTENT;
-	public string $statusText = StatusText::NO_CONTENT;
-	public mixed $message = [];
-	public string $response;
+	protected int $status = StatusCode::NO_CONTENT;
+	protected string $statusText = StatusText::NO_CONTENT;
+	protected mixed $message = [];
+	protected string $response;
 
 	/**
 	 * @param string $response Set the Response Type for default API response

@@ -1,17 +1,19 @@
 {
-    "name": "dconco/slides-status",
+    "name": "dconco/phpslides-status",
     "description": "PhpSlides Status Response in handling API",
-    "homepage": "https://github.com/dconco/slides-status",
+    "homepage": "https://github.com/dconco/phpslides-status",
     "type": "library",
-    "keywords": [ "slides-status", "status", "api", "slides" ],
-    "authors": [ {
+    "keywords": ["phpslides-status", "status", "api", "phpslides", "slides"],
+    "authors": [
+        {
             "name": "Dave Conco",
             "email": "concodave@gmail.com",
             "homepage": "https://dconco.github.io"
-        } ],
+        }
+    ],
     "version": "0.0.1",
     "require": {
-        "php": "^8.2"
+        "php": ">=8.2"
     },
     "autoload": {
         "psr-4": {
