@@ -35,8 +35,7 @@
         "phpunit/phpunit": "^11.2"
     },
     "scripts": {
-        "test": "phpunit",
-        "test-debug": "phpunit --debug"
+        "test": "phpunit"
     },
     "minimum-stability": "stable",
     "prefer-stable": true
