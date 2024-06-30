@@ -36,21 +36,23 @@ class Response
 
       foreach ($data as $key => $value)
       {
-         $li = $html->createElement('li');
-
          if (is_array($value))
          {
             for ($i = 0; $i < count($value); $i++)
             {
+               $li = $html->createElement('li');
                $li->textContent = array_keys($value)[$i] . ':' . array_values($value)[$i];
+
+               $ul->appendChild($li);
             }
          }
          else
          {
+            $li = $html->createElement('li');
             $li->textContent = $key . ':' . $value;
-         }
 
-         $ul->appendChild($li);
+            $ul->appendChild($li);
+         }
       }
       $html->appendChild($ul);
 
@@ -68,7 +70,7 @@ class Response
          {
             for ($i = 0; $i < count($value); $i++)
             {
-               $csv .= array_keys($value)[$i] . ',' . array_values($value)[$i];
+               $csv .= array_keys($value)[$i] . ',' . array_values($value)[$i] . "\n";
             }
          }
          else
