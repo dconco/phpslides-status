@@ -2,18 +2,24 @@
 
 namespace PhpSlides;
 
-use PhpSlides\Status\Response;
+use PhpSlides\Enums\Response;
 use PhpSlides\Interface\StatusInterface;
 
 class Status implements StatusInterface
 {
-	public string $responseType;
+	protected string $response;
 
 	/**
-	 * @param string $responseType Set the Response Type for default API response
+	 * @param string $response Set the Response Type for default API response
 	 */
-	public function __construct (string $responseType = Response::JSON)
+	public function __construct (string $response = Response::JSON)
 	{
-		$this->responseType = $responseType;
+		$responseTypes = [ Response::JSON, Response::HTML, Response::CSV, Response::XML ];
+
+		if (!in_array($response, $responseTypes))
+		{
+			$this->response = StatusText::UNSUPPORTED_MEDIA_TYPE;
+		}
+		$this->response = $response;
 	}
 }

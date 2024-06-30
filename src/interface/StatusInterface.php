@@ -2,7 +2,7 @@
 
 namespace PhpSlides\Interface;
 
-use PhpSlides\Status\Response;
+use PhpSlides\Enums\Response;
 
 interface StatusInterface
 {
