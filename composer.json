@@ -20,8 +20,24 @@
             "PhpSlides\\": "src/"
         }
     },
+    "autoload-dev": {
+        "psr-4": {
+            "PhpSlides\\Tests\\": "tests/"
+        }
+    },
     "config": {
-       
+        "allow-plugins": {
+            "bamarni/composer-bin-plugin": true
+        },
         "preferred-install": "dist"
-    }
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^11.2"
+    },
+    "scripts": {
+        "test": "phpunit",
+        "test-debug": "phpunit --debug"
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
 }
