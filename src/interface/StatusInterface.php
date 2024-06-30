@@ -4,7 +4,7 @@ namespace PhpSlides\Interface;
 
 use PhpSlides\StatusCode;
 use PhpSlides\StatusText;
-use PhpSlides\Enums\Response;
+use PhpSlides\Http\Response;
 
 interface StatusInterface
 {
@@ -20,7 +20,7 @@ interface StatusInterface
 
    public function getMessage (): mixed;
 
-   public function get (): string;
+   public function get (): string|array;
 
    public function getJson (): string;
 
@@ -32,7 +32,7 @@ interface StatusInterface
 
    public function setMessage (mixed $message): void;
 
-   public function error (array|string $data, int $status = StatusCode::INTERNAL_SERVER_ERROR): string;
+   public function error (array|string $data, int $status = StatusCode::INTERNAL_SERVER_ERROR): string|array;
 
-   public function success (array|string $data, int $status = StatusCode::OK): string;
+   public function success (array|string $data, int $status = StatusCode::OK): string|array;
 }

@@ -2,7 +2,7 @@
 
 namespace PhpSlides;
 
-use PhpSlides\Enums\Response;
+use PhpSlides\Http\Response;
 use PhpSlides\Interface\StatusInterface;
 
 class Status implements StatusInterface
@@ -44,7 +44,7 @@ class Status implements StatusInterface
 		return $this->message;
 	}
 
-	public function get (): string
+	public function get (): string|array
 	{
 		$data = [
 		 'status' => $this->status,
@@ -55,18 +55,16 @@ class Status implements StatusInterface
 		switch ($this->response)
 		{
 			case (Response::JSON):
-				$response = Response::json($data, $this->status);
+				return Response::json($data, $this->status);
 			case (Response::HTML):
-				$response = Response::html($data, $this->status);
+				return Response::html($data, $this->status);
 			case (Response::XML):
-				$response = Response::xml($data, $this->status);
+				return Response::xml($data, $this->status);
 			case (Response::CSV):
-				$response = Response::csv($data, $this->status);
+				return Response::csv($data, $this->status);
 			default:
-				$response = Response::text($data, $this->status);
+				return Response::array($data, $this->status);
 		}
-
-		return $response;
 	}
 
 	public function getJson (): string
@@ -107,45 +105,41 @@ class Status implements StatusInterface
 		$this->message = $message;
 	}
 
-	public function error (array|string $data, int $status = StatusCode::INTERNAL_SERVER_ERROR): string
+	public function error (array|string $data, int $status = StatusCode::INTERNAL_SERVER_ERROR): string|array
 	{
 		$data = [ 'error' => $data ];
 
 		switch ($this->response)
 		{
 			case (Response::JSON):
-				$response = Response::json($data, $status);
+				return Response::json($data, $status);
 			case (Response::HTML):
-				$response = Response::html($data, $status);
+				return Response::html($data, $status);
 			case (Response::XML):
-				$response = Response::xml($data, $status);
+				return Response::xml($data, $status);
 			case (Response::CSV):
-				$response = Response::csv($data, $status);
+				return Response::csv($data, $status);
 			default:
-				$response = Response::text($data, $status);
+				return Response::array($data, $status);
 		}
-
-		return $response;
 	}
 
-	public function success (array|string $data, int $status = StatusCode::OK): string
+	public function success (array|string $data, int $status = StatusCode::OK): string|array
 	{
 		$data = [ 'success' => $data ];
 
 		switch ($this->response)
 		{
 			case (Response::JSON):
-				$response = Response::json($data, $status);
+				return Response::json($data, $status);
 			case (Response::HTML):
-				$response = Response::html($data, $status);
+				return Response::html($data, $status);
 			case (Response::XML):
-				$response = Response::xml($data, $status);
+				return Response::xml($data, $status);
 			case (Response::CSV):
-				$response = Response::csv($data, $status);
+				return Response::csv($data, $status);
 			default:
-				$response = Response::text($data, $status);
+				return Response::array($data, $status);
 		}
-
-		return $response;
 	}
 }
