@@ -1,6 +1,6 @@
 {
     "name": "dconco/phpslides-status",
-    "description": "PhpSlides Status Response in handling API",
+    "description": "PhpSlides HTTP Status Response in handling PhpSlides API",
     "homepage": "https://github.com/dconco/phpslides-status",
     "type": "library",
     "keywords": ["phpslides-status", "status", "api", "phpslides", "slides"],
