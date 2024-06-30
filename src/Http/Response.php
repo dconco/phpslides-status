@@ -58,7 +58,7 @@ class Response
    }
    public static function csv (array $data = [], int $status = StatusCode::OK): string
    {
-      header('Content-Type: text/html');
+      header('Content-Type: text/csv');
       http_response_code($status);
 
       $csv = '';
