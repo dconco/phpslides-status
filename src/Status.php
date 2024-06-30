@@ -2,7 +2,7 @@
 
 namespace PhpSlides;
 
-use PhpSlides\Enums\ResponseType;
+use PhpSlides\Status\Response;
 use PhpSlides\Interface\StatusInterface;
 
 class Status implements StatusInterface
@@ -12,7 +12,7 @@ class Status implements StatusInterface
 	/**
 	 * @param string $responseType Set the Response Type for default API response
 	 */
-	public function __construct (string $responseType = ResponseType::JSON)
+	public function __construct (string $responseType = Response::JSON)
 	{
 		$this->responseType = $responseType;
 	}

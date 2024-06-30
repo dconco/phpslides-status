@@ -1,7 +1,6 @@
 <?php
 
 use PhpSlides\Status;
-use PhpSlides\Enums\ResponseType;
 
 include_once 'vendor/autoload.php';
 
