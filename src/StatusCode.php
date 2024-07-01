@@ -12,6 +12,15 @@ namespace PhpSlides;
  */
 class StatusCode
 {
+  /** @var int Informational - Continue */
+  const CONTINUE = 100;
+
+  /** @var int Informational - Switching Protocols */
+  const SWITCHING_PROTOCOLS = 101;
+
+  /** @var int Informational - Processing */
+  const PROCESSING = 102;
+
   /** @var int Success - OK */
   const OK = 200;
 

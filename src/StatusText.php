@@ -12,6 +12,15 @@ namespace PhpSlides;
  */
 class StatusText
 {
+   /** @var string Informational - Continue */
+   const CONTINUE = 'CONTINUE';
+
+   /** @var string Informational - Switching Protocols */
+   const SWITCHING_PROTOCOLS = 'SWITCHING_PROTOCOLS';
+
+   /** @var string Informational - Processing */
+   const PROCESSING = 'PROCESSING';
+
    /** @var string Success - OK */
    const OK = "OK";
 
