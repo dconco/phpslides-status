@@ -4,9 +4,11 @@ namespace PhpSlides;
 
 /**
  * Class StatusText
- *
- * This class defines constants for HTTP status codes text.
+ * 
+ * This class defines constants for HTTP status text.
  * Each constant represents a specific HTTP response status.
+ * 
+ * HTTP status text categorized into Success, Redirection, Client Error, and Server Error.
  */
 class StatusText
 {

@@ -7,8 +7,11 @@ namespace PhpSlides;
  * 
  * This class defines constants for HTTP status codes.
  * Each constant represents a specific HTTP response status.
+ * 
+ * HTTP status codes categorized into Success, Redirection, Client Error, and Server Error.
  */
-class StatusCode {
+class StatusCode
+{
   /** @var int Success - OK */
   const OK = 200;
 
