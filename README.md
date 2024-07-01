@@ -1,5 +1,9 @@
 # PhpSlides HTTP Status
 
+<div align="center">
+   <img src="./images/status.jpeg" alt="" width="100%" />
+</div>
+
 ## Installation
 
 After creating your PhpSlides project, navigate to the project directory and install PhpSlides-Status package using this command below:
