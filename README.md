@@ -1,4 +1,4 @@
-# PhpSlides HTTP Status
+# HTTP PhpSlides-Status
 
 <div align="center">
    <img src="./images/status.jpeg" alt="" width="100%" />
