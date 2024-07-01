@@ -3,6 +3,7 @@
     "description": "PhpSlides HTTP Status Response in handling PhpSlides API",
     "homepage": "https://github.com/dconco/phpslides-status",
     "type": "library",
+    "license": "MIT",
     "keywords": ["phpslides-status", "status", "api", "phpslides", "slides"],
     "authors": [
         {
