@@ -1,10 +1,9 @@
 <?php
 
-namespace PhpSlides\Exception;
+namespace PhpSlides\Status\Exception;
 
-use Throwable;
+use PhpSlides\Interface\SlidesException;
 
-interface ExceptionInterface extends Throwable
+interface ExceptionInterface extends SlidesException
 {
-
 }

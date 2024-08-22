@@ -1,9 +1,9 @@
 <?php
 
 
-namespace PhpSlides\Exception;
+namespace PhpSlides\Status\Exception;
 
-use Exception;
+use PhpSlides\Exception;
 
 class ApiException extends Exception implements ExceptionInterface
 {

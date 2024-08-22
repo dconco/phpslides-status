@@ -1,12 +1,10 @@
 <?php
 
-namespace PhpSlides\Http;
+namespace PhpSlides\Interface;
 
-use DOMDocument;
 use PhpSlides\StatusCode;
-use PhpSlides\Interface\ResponseInterface;
 
-class Response implements ResponseInterface
+interface ResponseInterface
 {
 	/**
 	 * The function `json` in PHP sets the response header to indicate JSON content and returns the
@@ -26,12 +24,7 @@ class Response implements ResponseInterface
 	public static function json (
 	 array $data = [],
 	 int $status = StatusCode::OK,
-	): string {
-		header('Content-Type: application/json');
-		http_response_code($status);
-
-		return json_encode($data);
-	}
+	): string;
 
 	/**
 	 * The function generates an HTML unordered list based on the provided data array with key-value
@@ -54,39 +47,7 @@ class Response implements ResponseInterface
 	public static function html (
 	 array $data = [],
 	 int $status = StatusCode::OK,
-	): string {
-		header('Content-Type: text/html');
-		http_response_code($status);
-
-		$html = new DOMDocument();
-
-		$ul = $html->createElement('ul');
-
-		foreach ($data as $key => $value)
-		{
-			if (is_array($value))
-			{
-				for ($i = 0; $i < count($value); $i++)
-				{
-					$li = $html->createElement('li');
-					$li->textContent =
-					 array_keys($value)[$i] . ':' . array_values($value)[$i];
-
-					$ul->appendChild($li);
-				}
-			}
-			else
-			{
-				$li = $html->createElement('li');
-				$li->textContent = $key . ':' . $value;
-
-				$ul->appendChild($li);
-			}
-		}
-		$html->appendChild($ul);
-
-		return $html->saveHTML();
-	}
+	): string;
 
 	/**
 	 * The function generates a CSV string from an array of data and sets the appropriate HTTP headers.
@@ -104,32 +65,7 @@ class Response implements ResponseInterface
 	public static function csv (
 	 array $data = [],
 	 int $status = StatusCode::OK,
-	): string {
-		header('Content-Type: text/csv');
-		http_response_code($status);
-
-		$csv = '';
-		foreach ($data as $key => $value)
-		{
-			if (is_array($value))
-			{
-				for ($i = 0; $i < count($value); $i++)
-				{
-					$csv .=
-					 array_keys($value)[$i] .
-					 ',' .
-					 array_values($value)[$i] .
-					 "\n";
-				}
-			}
-			else
-			{
-				$csv .= $key . ',' . $value . "\n";
-			}
-		}
-
-		return $csv;
-	}
+	): string;
 
 	/**
 	 * The function generates an XML document based on the provided data array and HTTP status code.
@@ -149,37 +85,7 @@ class Response implements ResponseInterface
 	public static function xml (
 	 array $data = [],
 	 int $status = StatusCode::OK,
-	): string {
-		header('Content-Type: text/xml');
-		http_response_code($status);
-
-		$xml = new DOMDocument('1.0', 'UTF-8');
-		$root = $xml->createElement('root');
-
-		foreach ($data as $key => $value)
-		{
-			if (is_array($value))
-			{
-				for ($i = 0; $i < count($value); $i++)
-				{
-					$element = $xml->createElement(
-					 array_keys($value)[$i],
-					 array_values($value)[$i],
-					);
-					$root->appendChild($element);
-				}
-			}
-			else
-			{
-				$element = $xml->createElement($key, $value);
-				$root->appendChild($element);
-			}
-		}
-
-		$xml->appendChild($root);
-
-		return $xml->saveXML();
-	}
+	): string;
 
 	/**
 	 * This PHP function sets the HTTP response status code and content type before returning an array.
@@ -196,10 +102,5 @@ class Response implements ResponseInterface
 	public static function array(
 	 array $data = [],
 	 int $status = StatusCode::UNSUPPORTED_MEDIA_TYPE,
-	): array {
-		header('Content-Type: */*');
-		http_response_code($status);
-
-		return (array) $data;
-	}
+	): array;
 }
