@@ -3,6 +3,7 @@
 namespace PhpSlides;
 
 use PhpSlides\Http\Response;
+use PhpSlides\Enums\ResponseType;
 use PhpSlides\Interface\StatusInterface;
 
 class Status implements StatusInterface
@@ -21,9 +22,9 @@ class Status implements StatusInterface
 	 * `Response::HTML`, `Response::CSV`, or `Response::XML`. If the provided `response` value is not one
 	 * of
 	 */
-	public function __construct (string $response = Response::JSON)
+	public function __construct (string $response = ResponseType::JSON)
 	{
-		$responseTypes = [ Response::JSON, Response::HTML, Response::CSV, Response::XML ];
+		$responseTypes = [ ResponseType::JSON, ResponseType::HTML, ResponseType::CSV, ResponseType::XML ];
 
 		if (!in_array($response, $responseTypes))
 		{
@@ -83,13 +84,13 @@ class Status implements StatusInterface
 
 		switch ($this->response)
 		{
-			case (Response::JSON):
+			case (ResponseType::JSON):
 				return Response::json($data, $this->status);
-			case (Response::HTML):
+			case (ResponseType::HTML):
 				return Response::html($data, $this->status);
-			case (Response::XML):
+			case (ResponseType::XML):
 				return Response::xml($data, $this->status);
-			case (Response::CSV):
+			case (ResponseType::CSV):
 				return Response::csv($data, $this->status);
 			default:
 				return Response::array($data, $this->status);
@@ -180,7 +181,7 @@ class Status implements StatusInterface
 	 * This PHP function handles errors by formatting the error data based on the response type and status
 	 * code.
 	 * 
-	 * @param array data The `data` parameter in the `error` function can accept either an array or a
+	 * @param string|array data The `data` parameter in the `error` function can accept either an array or a
 	 * string. It is used to provide the error message or data that needs to be returned in the response.
 	 * @param int status The `status` parameter in the `error` function is an optional integer parameter
 	 * that represents the HTTP status code to be returned in the response. If not provided, the default
@@ -191,19 +192,19 @@ class Status implements StatusInterface
 	 * the value of the `` property. The response can be in JSON, HTML, XML, CSV, or as a plain
 	 * array.
 	 */
-	public function error (array|string $data, int $status = StatusCode::INTERNAL_SERVER_ERROR): string|array
+	public function error (string|array $data, int $status = StatusCode::INTERNAL_SERVER_ERROR): string|array
 	{
 		$data = [ 'error' => $data ];
 
 		switch ($this->response)
 		{
-			case (Response::JSON):
+			case (ResponseType::JSON):
 				return Response::json($data, $status);
-			case (Response::HTML):
+			case (ResponseType::HTML):
 				return Response::html($data, $status);
-			case (Response::XML):
+			case (ResponseType::XML):
 				return Response::xml($data, $status);
-			case (Response::CSV):
+			case (ResponseType::CSV):
 				return Response::csv($data, $status);
 			default:
 				return Response::array($data, $status);
@@ -214,7 +215,7 @@ class Status implements StatusInterface
 	 * This PHP function returns a success response in various formats based on the specified response
 	 * type.
 	 * 
-	 * @param array data The `data` parameter in the `success` function can be either an array or a
+	 * @param string|array data The `data` parameter in the `success` function can be either an array or a
 	 * string. It is wrapped in an array with the key 'success' before being returned based on the
 	 * response type specified.
 	 * @param int status The `status` parameter in the `success` function represents the HTTP status code
@@ -228,19 +229,19 @@ class Status implements StatusInterface
 	 * type. The specific response format returned depends on the value of `->response` which can be
 	 * JSON, HTML, XML,
 	 */
-	public function success (array|string $data, int $status = StatusCode::OK): string|array
+	public function success (string|array $data, int $status = StatusCode::OK): string|array
 	{
 		$data = [ 'success' => $data ];
 
 		switch ($this->response)
 		{
-			case (Response::JSON):
+			case (ResponseType::JSON):
 				return Response::json($data, $status);
-			case (Response::HTML):
+			case (ResponseType::HTML):
 				return Response::html($data, $status);
-			case (Response::XML):
+			case (ResponseType::XML):
 				return Response::xml($data, $status);
-			case (Response::CSV):
+			case (ResponseType::CSV):
 				return Response::csv($data, $status);
 			default:
 				return Response::array($data, $status);
